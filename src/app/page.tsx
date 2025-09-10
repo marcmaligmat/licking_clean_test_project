@@ -162,20 +162,95 @@ export default function ProviderProfile() {
   }
 
   return (
-    <div className="min-h-screen bg-crisp-white py-4 px-4 sm:py-8">
-      <div className="max-w-profile mx-auto">
-        {/* Header */}
-        <header className="text-center mb-8">
-          <h1 className="font-poppins text-3xl font-bold text-soft-teal mb-2">
-            Licking Clean
-          </h1>
-          <h2 className="font-poppins text-xl text-soft-teal mb-2">
-            Professional Cleaning Services
-          </h2>
-          <p className="text-body text-slate-gray">
-            Top-Rated • Trusted • Reliable
-          </p>
-        </header>
+    <div className="min-h-screen bg-crisp-white">
+      {/* Navigation */}
+      <nav className="bg-white shadow-md border-b border-gray-100 sticky top-0 z-50">
+        <div className="max-w-profile mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <h1 className="font-poppins text-xl sm:text-2xl lg:text-3xl font-bold text-soft-teal">
+                Licking Clean
+              </h1>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-8">
+                <a href="#services" className="text-slate-gray hover:text-soft-teal px-3 py-2 text-sm font-medium transition-colors">
+                  Services
+                </a>
+                <a href="#reviews" className="text-slate-gray hover:text-soft-teal px-3 py-2 text-sm font-medium transition-colors">
+                  Reviews
+                </a>
+                <a href="#about" className="text-slate-gray hover:text-soft-teal px-3 py-2 text-sm font-medium transition-colors">
+                  About
+                </a>
+                <a href="#contact" className="text-slate-gray hover:text-soft-teal px-3 py-2 text-sm font-medium transition-colors">
+                  Contact
+                </a>
+                <button className="bg-warm-coral hover:bg-opacity-90 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                  Book Now
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-slate-gray hover:text-soft-teal p-2 rounded-md transition-colors"
+                aria-label="Toggle menu"
+              >
+                <div className="w-6 h-6 flex flex-col justify-center items-center">
+                  <span className={`bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`}></span>
+                  <span className={`bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+                  <span className={`bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'}`}></span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Navigation Menu */}
+          {isMenuOpen && (
+            <div className="md:hidden">
+              <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-100">
+                <a href="#services" className="text-slate-gray hover:text-soft-teal block px-3 py-2 text-base font-medium transition-colors">
+                  Services
+                </a>
+                <a href="#reviews" className="text-slate-gray hover:text-soft-teal block px-3 py-2 text-base font-medium transition-colors">
+                  Reviews
+                </a>
+                <a href="#about" className="text-slate-gray hover:text-soft-teal block px-3 py-2 text-base font-medium transition-colors">
+                  About
+                </a>
+                <a href="#contact" className="text-slate-gray hover:text-soft-teal block px-3 py-2 text-base font-medium transition-colors">
+                  Contact
+                </a>
+                <button className="bg-warm-coral hover:bg-opacity-90 text-white px-4 py-2 rounded-md text-base font-medium transition-colors w-full mt-2">
+                  Book Now
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <div className="py-4 px-4 sm:py-8">
+        <div className="max-w-profile mx-auto">
+          {/* Hero Header */}
+          <header className="text-center mb-8 py-8 lg:py-16">
+            <h2 className="font-poppins text-2xl sm:text-3xl lg:text-5xl font-bold text-soft-teal mb-4">
+              Professional Cleaning Services
+            </h2>
+            <p className="text-lg sm:text-xl text-slate-gray mb-2">
+              Top-Rated • Trusted • Reliable
+            </p>
+            <p className="text-body text-slate-gray max-w-2xl mx-auto">
+              Experience the difference with our professional cleaning team. We bring years of expertise and eco-friendly solutions to make your home spotless.
+            </p>
+          </header>
 
         {/* Provider Profile Section */}
         <section>
@@ -325,12 +400,13 @@ export default function ProviderProfile() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="text-center mt-8 py-4">
-          <p className="text-sm text-gray-400">
-            © 2024 Licking Clean. Professional cleaning services you can trust.
-          </p>
-        </footer>
+          {/* Footer */}
+          <footer className="text-center mt-8 py-4">
+            <p className="text-sm text-gray-400">
+              © 2024 Licking Clean. Professional cleaning services you can trust.
+            </p>
+          </footer>
+        </div>
       </div>
     </div>
   );
