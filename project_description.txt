@@ -1,0 +1,46 @@
+Task Description:
+Build a simplified provider profile page for “Licking Clean” with the following:
+Frontend (Next.js, React, Tailwind CSS):
+Create a single, mobile-optimized page inspired by Thumbtack.com’s clean profiles and Care.com’s mom-focused interface & trust signals.
+Use brand colors: Soft Teal (#4DB6AC) headers, Warm Coral (#FF7F50) buttons, Crisp White (#FFFFFF) background, Slate Gray (#708090) text, Golden Beige (#F5E050) badges.
+Use fonts: Poppins (20px headings, bold), Lato (14px body). Available via Google Fonts or Tailwind (font-poppins, font-lato).
+Include:
+Provider Info: Name, placeholder photo (e.g., smiling cleaner), and 50-word bio (fetch from Supabase).
+Badge: “Top-Rated” badge (Golden Beige, Tailwind-styled).
+Reviews: 3 hardcoded reviews (e.g., “5 stars, great service!”).
+Sort Button: “Sort by Highest Rating” button to reorder reviews (React state, JavaScript).
+Book Now: Button that logs a mock booking to Supabase (e.g., displays “Booking Saved!”).
+Layout: Single-column (mobile-first, centered, max-width 800px).
+Backend (Supabase):
+Set up a free Supabase project with:
+A providers table (fields: id, name (string), bio (string), rating (integer, 1-5)). Insert 1 sample provider.
+A bookings table (fields: id, provider_id, timestamp).
+Fetch provider data (name, bio, rating) to display on the page.
+On “Book Now” click, insert a booking record (linked to provider) and show a confirmation.
+Admin Dashboard (Appsmith):
+Create a minimal Appsmith dashboard (free tier) to:
+Display the providers table (name, bio).
+Allow editing the bio (updates Supabase).
+No chart required to save time.
+Deployment (Vercel, GitHub):
+Deploy the page on Vercel (free tier) via GitHub repository.
+Include a README in GitHub with setup steps (e.g., “Run npm install, set Supabase keys”).
+Use GitHub Copilot, Vercel v0, Supabase AI, or ChatGPT to speed up coding (mention which in submission).
+Deliverables:
+Vercel URL: Live page link (e.g., licking-clean-test.vercel.app).
+GitHub Repo: Public repository with Next.js code, Tailwind config, and README.
+Appsmith URL/Screenshots: Link to dashboard or 2-3 screenshots (provider table, edit form).
+Explanation: 50-word note on setup (e.g., “Used Supabase AI for tables, Copilot for React components”).
+AI Tools Used: List AI tools that were used.
+Time Spent: Hours taken (3-4 max).
+Instructions:
+Start with npx create-next-app@latest (App Router).
+Install Tailwind CSS (npm install tailwindcss).
+Set up Supabase (supabase.com) with providers and bookings tables. Use Supabase SDK (@supabase/supabase-js).
+Create Appsmith dashboard (appsmith.com) with Supabase connection.
+Deploy via Vercel (connect to GitHub).
+Use AI tools (Copilot, v0, etc.) to optimize.
+Resources:
+Colors: (Above).
+Inspiration: Thumbtack clean profiles (thumbtack.com) and Care mom-focused interface & trust signals (Care.com).
+Docs: nextjs.org, supabase.com/docs, appsmith.com/docs.
