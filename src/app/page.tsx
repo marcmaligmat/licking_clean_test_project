@@ -15,7 +15,7 @@ interface Review {
 const mockReviews: Review[] = [
   {
     id: 1,
-    rating: 5,
+    rating: 4,
     text: 'Amazing service! My house has never been cleaner. Professional and trustworthy.',
     author: 'Sarah M.',
     date: '2024-02-15',
@@ -29,7 +29,7 @@ const mockReviews: Review[] = [
   },
   {
     id: 3,
-    rating: 4,
+    rating: 5,
     text: 'Very thorough cleaning and friendly staff. Will book again!',
     author: 'Michael R.',
     date: '2024-02-05',
@@ -42,6 +42,10 @@ export default function ProviderProfile() {
   const [loading, setLoading] = useState(true);
   const [bookingStatus, setBookingStatus] = useState<string>('');
   const [isBookingLoading, setIsBookingLoading] = useState(false);
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | 'original'>(
+    'original'
+  );
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     fetchProvider();
@@ -90,8 +94,25 @@ export default function ProviderProfile() {
   }
 
   function sortReviewsByRating() {
-    const sorted = [...reviews].sort((a, b) => b.rating - a.rating);
+    let sorted: Review[];
+    let newSortOrder: 'asc' | 'desc' | 'original';
+
+    if (sortOrder === 'original') {
+      // Sort by highest rating first
+      sorted = [...reviews].sort((a, b) => b.rating - a.rating);
+      newSortOrder = 'desc';
+    } else if (sortOrder === 'desc') {
+      // Sort by lowest rating first
+      sorted = [...reviews].sort((a, b) => a.rating - b.rating);
+      newSortOrder = 'asc';
+    } else {
+      // Reset to original order
+      sorted = [...mockReviews];
+      newSortOrder = 'original';
+    }
+
     setReviews(sorted);
+    setSortOrder(newSortOrder);
   }
 
   async function handleBooking() {
@@ -255,9 +276,17 @@ export default function ProviderProfile() {
               <button
                 onClick={sortReviewsByRating}
                 className="bg-soft-teal hover:bg-opacity-90 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 w-full sm:w-auto"
-                aria-label="Sort reviews by highest rating first"
+                aria-label={`Sort reviews ${
+                  sortOrder === 'original'
+                    ? 'by highest rating first'
+                    : sortOrder === 'desc'
+                    ? 'by lowest rating first'
+                    : 'to original order'
+                }`}
               >
-                Sort by Highest Rating
+                {sortOrder === 'original' && '↓ Sort by Highest Rating'}
+                {sortOrder === 'desc' && '↑ Sort by Lowest Rating'}
+                {sortOrder === 'asc' && '⟲ Reset to Original Order'}
               </button>
             </div>
 
