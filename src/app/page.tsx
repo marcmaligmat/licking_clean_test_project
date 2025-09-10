@@ -263,7 +263,7 @@ export default function ProviderProfile() {
               {/* Provider Photo */}
               <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden bg-gray-100 flex-shrink-0">
                 <Image
-                  src="/api/placeholder/128/128"
+                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=face&auto=format&q=80"
                   alt={`${provider?.name} - Professional Cleaner`}
                   width={128}
                   height={128}
@@ -279,7 +279,7 @@ export default function ProviderProfile() {
                         provider?.name
                           ?.split(' ')
                           .map((n) => n[0])
-                          .join('') || 'MC'
+                          .join('') || 'MR'
                       }
                     </div>
                   `;
